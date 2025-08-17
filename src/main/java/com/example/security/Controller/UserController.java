@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("")
 public class UserController {
 
     @Autowired
@@ -19,6 +19,11 @@ public class UserController {
 
         MyUser user = userService.save(myUser);
         return user;
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody MyUser myUser) {
+       return userService.verify(myUser);
     }
 
     @GetMapping("/all")
